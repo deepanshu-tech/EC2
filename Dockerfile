@@ -19,8 +19,8 @@ RUN aws configure set output json
 # RUN apt install awscli 
 WORKDIR /app
 # RUN chmod -R 755 config.sh
-# RUN export AWS_ACCESS_KEY_ID=AKIAVLYDSOMUFK5YWYP6
-# RUN export AWS_SECRET_ACCESS_KEY=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
+# RUN export AWS_ACCESS_KEY_ID=""
+# RUN export AWS_SECRET_ACCESS_KEY=""
 # RUN export AWS_DEFAULT_REGION=us-east-1
 RUN pip3 install boto3
 RUN pip3 install flask
