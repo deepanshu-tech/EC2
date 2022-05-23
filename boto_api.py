@@ -18,6 +18,7 @@ def create():
 
 
 @app.route('/create_ec2',methods=['POST'])
+
 def create_ec2():
     ec2 = boto3.client('ec2')
     if request.method=='POST':
