@@ -19,7 +19,7 @@
                 "PrivateDnsName": "",
                 "ProductCodes": [],
                 "PublicDnsName": "",
-                "State": {"Code": 48, "Name": "terminated"},
+                "State": {"Code": 48, "Name": "terminated"},AKIASFSFR77Z7DIRMNXF
                 "StateTransitionReason": "User initiated (2022-04-23 11:25:40 GMT)",
                 "Architecture": "x86_64",
                 "BlockDeviceMappings": [],

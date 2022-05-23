@@ -8,7 +8,6 @@ app=Flask(__name__)
 print("working")
 @app.route('/')
 def home():
-    # return "Hello EC2 "
     return render_template('index.html')
 
 
@@ -34,41 +33,34 @@ def create_ec2():
                 MaxCount=maxcount, #MaxCount: Maximum number of EC2 instances to create
                 InstanceType=instancetype,)
             return render_template('success.html')
-        except exception as e:
-            print("Sorry!", e.__class__, "occurred.")
-     
+        except:
+            print("Sorry! errpr occurred.")
+    
     
     # print("EC2 Instance Launched succesfully")
 
 @app.route('/show')
 def show():
     ec2 = boto3.client('ec2')
-    # try:
+
     print("logging done")
     response = ec2.describe_instances().get('Reservations')
     return render_template('show.html',response=response)
-    # except exception as e:
-        # print("Sorry!", e.__class__, "occurred.")
 
 @app.route('/start/<id>')
 def start(id):
     ec2=boto3.client('ec2')
-    try:
-        response = ec2.start_instances(InstanceIds=[id])   
-        return redirect(url_for('show'))
-    except exception as e:
-        print("Sorry!", e.__class__, "occurred.")
+    response = ec2.start_instances(InstanceIds=[id])   
+    return redirect(url_for('show'))
         
 
 @app.route('/stop/<id>')
 def stop_instance(id):
     # instance_id=int(instance_id)
     ec2 = boto3.client("ec2")
-    try:
-        response = ec2.stop_instances(InstanceIds=[id])
-        return redirect(url_for('show'))
-    except exception as e:
-        print("Sorry!", e.__class__, "occurred.")
+    response = ec2.stop_instances(InstanceIds=[id])
+    return redirect(url_for('show'))
+   
     
 
 @app.route('/terminate/<id>')
@@ -99,14 +91,14 @@ def terminate_instance(id):
 
 # get_public_ip('i-048b8cf7815d335ce')
 
-# def get_running_instances():
-#     ec2_client = boto3.client("ec2")
-#     reservations = ec2_client.describe_instances(Filters=[
-#         {
-#             # "Name": "instance-state-name",
-#             "Values": ["running"]
-#         }
-#     ]).get("Reservations")
+def get_running_instances():
+    ec2_client = boto3.client("ec2")
+    reservations = ec2_client.describe_instances(Filters=[
+        {
+            # "Name": "instance-state-name",
+            "Values": ["running"]
+        }
+    ]).get("Reservations")
 #     for reservation in reservations:
 #         for instance in reservation["Instances"]:
 #             instance_id = instance["InstanceId"]
@@ -149,4 +141,4 @@ def terminate_instance(id):
 
 
 if __name__=='__main__':
-    app.run(debug=True,port=5001,host='0.0.0.0')
+    app.run(debug=True,port=5000,host='0.0.0.0')

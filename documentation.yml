@@ -27,3 +27,8 @@
   - sudo docker run -e Access_Key='AKIASVK5HNRKS4JMRYOK' -e Access_secret='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' -e Region='us-east-1' -p 5000:5000 --name flask1 antima915/aws_flask:1.0
   -aws configure set aws_access_key_id "$Access_Key" && aws configure set  aws_secret_access_key "$Access_secret"  && aws configure set region "$Region"  && aws configure set output "none" 
   - https://docs.google.com/forms/d/e/1FAIpQLScxztDvO4LRZ90UksdHD3TiAOCAcxYu9NsaYXvz82X8BTv4AQ/viewform
+
+  sudo docker run -it -e Access_Key='AKIAVLYDSOMUFK5YWYP6' -e Access_secret='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' -e Region='us-east-1' -p 5001:5001 --name ec2 deepanshuinnovaccer/myec2:latest
+
+  AKIAVLYDSOMUFK5YWYP6
+  YpW+U/sRwa0bTAwl3ZMSdENbqEFr9upoFmDgWEm+
